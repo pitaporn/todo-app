@@ -1,21 +1,19 @@
-type Props<T> = {
-  item: T;
-  onChange: (item: T) => unknown;
+import TodoInterfaces from "../interfaces/ToDoInterfaces";
+
+type Props = {
+  item: TodoInterfaces;
+  onChange: (item: TodoInterfaces) => unknown;
 };
 
-export default function ListItem<
-  T extends { message?: string; done?: boolean }
->({ item, onChange }: Props<T>) {
+export default function ListItem({ item, onChange }: Props) {
   return (
-    <>
-      <label>
-        <input
-          type="checkbox"
-          checked={item.done}
-          onChange={() => onChange(item)}
-        ></input>
-        {item.message}
-      </label>
-    </>
+    <label>
+      <input
+        type="checkbox"
+        checked={item.done}
+        onChange={() => onChange(item)}
+      ></input>
+      {item.message}
+    </label>
   );
 }
